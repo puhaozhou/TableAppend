@@ -1,7 +1,8 @@
 Vue.component('vue-table', {
     props: {
         tabledata:Array,
-        tablecolumns:Array
+        tablecolumns:Array,
+        settings:Object
     },
     template: 
     `<table class="table table-bordered">
@@ -17,7 +18,7 @@ Vue.component('vue-table', {
             <td v-for="key in keys">
                 <label>{{row[key]}}</label>
                 <input type="input" class="table_input" style="display:none"></input>
-                <span class="glyphicon glyphicon-pencil" @click="label_edit($event)" style="float:right"></span>
+                <span class="glyphicon glyphicon-pencil" @click="label_edit($event)" v-if="settings.editable" style="float:right"></span>
                 <span class="glyphicon glyphicon-ok" @click="save_edit($event)" style="float:right;display:none"></span>
                 <span class="glyphicon glyphicon-remove" @click="cancel_edit($event)" style="float:right;display:none"></span>
             </td>

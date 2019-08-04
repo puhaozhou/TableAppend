@@ -2,16 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
     <script src="./Component/table-component.js"></script>
     <title>tableappend</title>
   </head>
   <body>
     <div id="app">
-        <vue-table :tabledata="gridData" :tablecolumns="gridColumns"></vue-table>
+        <vue-table :tabledata="gridData" :tablecolumns="gridColumns" :settings="settings"></vue-table>
     </div>
     <!-- built files will be auto injected -->
   </body>
@@ -32,7 +32,10 @@
                 {VehicleBodyType:"adhufbwv", maxPrice: 32, avgPrice: 25, minPrice : 20, Vehicle : "abc", Brand : "audi", Vehicleid: "text1"},
                 {VehicleBodyType:"efhwufue", maxPrice: 42, avgPrice: 35, minPrice : 30, Vehicle : "dfg", Brand : "bmw", Vehicleid: "text2"},
                 {VehicleBodyType:"reuhnvue", maxPrice: 52, avgPrice: 45, minPrice : 40, Vehicle : "reg", Brand : "benz", Vehicleid: "text3"}
-                ]
+                ],
+                settings:{
+                    editable: true,                    
+                }
             }
         });
   </script>
