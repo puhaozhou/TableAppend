@@ -16,6 +16,7 @@ Vue.component('vue-table', {
             <tr v-for="row in tabledata">
             <td v-for="key in keys">
                 <label>{{row[key]}}</label>
+                <input type="input" class="table_input" style="display:none"></input>
                 <span class="glyphicon glyphicon-pencil" @click="label_edit($event)" style="float:right"></span>
                 <span class="glyphicon glyphicon-ok" @click="save_edit($event)" style="float:right;display:none"></span>
                 <span class="glyphicon glyphicon-remove" @click="cancel_edit($event)" style="float:right;display:none"></span>
@@ -37,17 +38,32 @@ Vue.component('vue-table', {
     },
     methods:{
        label_edit(obj){
-          obj = obj.currentTarget;
-          $(obj).prev().hide();
-          var pre_value = $(obj).prev().text();
-          var new_input = '<input value=' + pre_value + '></input>';
-          $(obj).parent().append(new_input);
-          $(obj).hide();
-          $(obj).next().show();
-          $(obj).next().next().show();
+          var edit_button = obj.currentTarget;
+          $(edit_button).siblings("label").hide();
+          var label_value = $(edit_button).siblings("label").text();
+          $(edit_button).siblings("input").val(label_value);
+          $(edit_button).siblings("input").show();
+          $(edit_button).hide();
+          $(edit_button).siblings(".glyphicon.glyphicon-ok").show();
+          $(edit_button).siblings(".glyphicon.glyphicon-remove").show();
        },
        save_edit(obj){
-          
+        var save_button = obj.currentTarget;
+        $(save_button).siblings('input').hide();
+        var input_value = $(save_button).siblings('input').val();
+        $(save_button).siblings('label').text(input_value);
+        $(save_button).siblings('label').show();
+        $(save_button).siblings(".glyphicon.glyphicon-pencil").show();
+        $(save_button).siblings(".glyphicon.glyphicon-remove").hide();
+        $(save_button).hide();
+       },
+       cancel_edit(obj){
+        var cancel_button = obj.currentTarget;
+        $(cancel_button).siblings('input').hide();
+        $(cancel_button).siblings('label').show();
+        $(cancel_button).siblings(".glyphicon.glyphicon-pencil").show();
+        $(cancel_button).siblings(".glyphicon.glyphicon-ok").hide();
+        $(cancel_button).hide();
        }
     },
 });
