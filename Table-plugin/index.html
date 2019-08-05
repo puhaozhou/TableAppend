@@ -34,7 +34,10 @@
                 {VehicleBodyType:"reuhnvue", maxPrice: 52, avgPrice: 45, minPrice : 40, Vehicle : "reg", Brand : "benz", Vehicleid: "text3"}
                 ],
                 settings:{
-                    editable: true,                    
+                    editable: true,
+                    save_callback: function(){
+                        alert("success!!!");
+                    }                    
                 }
             }
         });
