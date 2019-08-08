@@ -31,15 +31,27 @@ export default {
         pageData:Object
     },
   computed: {
-        tableAppend: function(){
+        tableAppend(){
           var tableAppend = {};
           if(this.pageData != null && this.pageData.hasOwnProperty('tableAppend')){
               tableAppend = this.pageData.tableAppend;
           }
+          if(!tableAppend.hasOwnProperty('tableColumns')){
+             tableAppend.tableColumns = [];
+          }
+          if(!tableAppend.hasOwnProperty("tableData")){
+             tableAppend.tableData = [];
+          }
+          if(!tableAppend.hasOwnProperty("settings")){
+             tableAppend.settings = {};
+          }
           return tableAppend;
         },
-        keys:function(){
+        keys(){
             var result = [];
+            if(this.tableAppend.tableColumns.lenth == 0){
+              return result;
+            }
             this.tableAppend.tableColumns.map(
                 function(i){
                     result.push(i.ColumnName);
@@ -47,11 +59,9 @@ export default {
             );
             return result;
         },
-        settings:function(){
+        settings() {
           var result = {};
-          if(this.tableAppend.hasOwnProperty('settings')){
-            result = this.tableAppend.settings;
-          }
+          result = this.tableAppend.settings;
           if(!result.hasOwnProperty("editable")){
             result.editable = false;
           }
