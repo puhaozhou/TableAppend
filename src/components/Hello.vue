@@ -16,18 +16,42 @@
       <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
+      <router-link v-bind:to="'/TableAppend'" >TableAppend</router-link>
     </ul>
+    <TableAppend :pageData="pageData"></TableAppend>
   </div>
 </template>
 
 <script>
+import TableAppend from './TableAppend'
 export default {
   name: 'hello',
+  components:{
+    TableAppend
+  },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      pageData:{
+               tableAppend:{
+                  tableColumns:[
+                  { ColumnName: "Vehicleid", Name: "VehicelID" },
+                  { ColumnName: "Brand", Name: "品牌" },
+                  { ColumnName: "Vehicle", Name: "车系" },
+                  { ColumnName: "minPrice", Name: "最低价(万元)" },
+                  { ColumnName: "avgPrice", Name: "均价(万元)" },
+                  { ColumnName: "maxPrice", Name: "最高价(万元)" },
+                  { ColumnName: "VehicleBodyType", Name: "车身类别" }
+                  ],
+                  tableData:[
+                  {VehicleBodyType:"adhufbwv", maxPrice: 32, avgPrice: 25, minPrice : 20, Vehicle : "abc", Brand : "audi", Vehicleid: "text1"},
+                  {VehicleBodyType:"efhwufue", maxPrice: 42, avgPrice: 35, minPrice : 30, Vehicle : "dfg", Brand : "bmw", Vehicleid: "text2"},
+                  {VehicleBodyType:"reuhnvue", maxPrice: 52, avgPrice: 45, minPrice : 40, Vehicle : "reg", Brand : "benz", Vehicleid: "text3"}
+                  ]
+               }
     }
   }
+}
 }
 </script>
 
